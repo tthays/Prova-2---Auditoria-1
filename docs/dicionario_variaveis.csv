@@ -1,0 +1,24 @@
+variavel,tipo,descricao,dominio
+id_lancamento,inteiro,Identificador único do lançamento (sequencial),1..520180
+data_lancamento,data,Data de registro contábil do custo,2018-2025
+data_documento,data,Data de emissão do documento de suporte,<= data_lancamento (exceto erro E02)
+data_competencia,data,Último dia do mês de lançamento,fim de mês
+id_empreendimento,texto,Código SINTÉTICO do empreendimento (não corresponde a projetos reais),EMP-001..EMP-110
+id_unidade_lote,texto,Unidade imobiliária ou lote (sintético),EMP-xxx-Uxxxx / -Lxx / -GERAL
+categoria_nota7,texto,Componente da nota 7 (p.51 da DFP),IMOVEIS_CONCLUIDOS; IMOVEIS_EM_CONSTRUCAO; TERRENOS_NOVAS_OBRAS; ENCARGOS_FINANCEIROS; ADIANTAMENTO_FORNECEDORES
+tipo_custo,texto,Natureza do custo capitalizado,20 tipos permitidos; tipos de despesa = erro E05
+documento_tipo,texto,Tipo do documento de suporte,NF-E; MEDICAO; GUIA_TRIBUTO; CONTRATO_PARCELA; APOLICE; APROPRIACAO_INTERNA
+documento_numero,texto,Número sintético do documento,prefixo-7 dígitos
+fornecedor_cod,texto,Código do fornecedor no cadastro sintético (vazio quando não aplicável),F000001..F004000; F9xxxxx = erro E08
+valor_rs,decimal,Valor do lançamento em reais,> 0 (negativo = erro E09)
+classificacao_balanco,texto,Classificação no balanço,CIRCULANTE; NAO_CIRCULANTE
+data_realizacao_prevista,data,Realização esperada (venda/baixa); define circulante se <= 2026-12-31,2026-2031
+status_unidade,texto,Situação da unidade,EM_ESTOQUE; BANCO_TERRENO; NAO_APLICAVEL
+data_venda_unidade,data,Preenchida só quando a unidade foi vendida (erro E07),vazio normalmente
+origem_lancamento,texto,Origem do lançamento,AUTOMATICO_ERP; INTERFACE_MEDICAO; MANUAL
+usuario_lancamento,texto,Usuário/sistema (sintético),SYS_ERP; SYS_MEDICAO; U001..U030
+hora_lancamento,hh:mm:ss,Hora de registro,00:00:00-23:59:59
+base_capitalizavel_rs,decimal,Base de cálculo do encargo (só ENCARGOS_FINANCEIROS),valor/taxa
+taxa_mensal,decimal,"Taxa mensal de capitalização (só encargos); teto de política 1,5% a.m.","0,0080-0,0115 (erro E06: 0,025-0,04)"
+lancamento_estorno_ref,inteiro,Referência ao lançamento estornado (vazio na base),vazio
+sintetico,texto,Marca de dados sintéticos,SIM
